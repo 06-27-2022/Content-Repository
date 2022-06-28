@@ -1,4 +1,4 @@
-# Java/React Environment Setup Guide (Updated For Demo)
+# Java/React Environment Setup Guide
 ---
 
 ## Purpose
@@ -21,8 +21,8 @@ The following technologies and/or services are required in order to complete thi
 - **Apache Tomcat 8**: During this program, we will explore web development. As a result, we'll need a runtime environment for our web applications. Apache Tomcat provides a web server environment in which we can run our Java code so that we can easily and quickly deploy our web applications.
 - **Postman**: Postman is used for testing RESTful APIs. We'll use it to set up collections of tests for the RESTful APIs we design throughout the program. It can also be used to quickly test a single endpoint.
 - **Node.js**: Node.js is a JavaScript runtime environment which executes JavaScript outside of your web browser. It also comes with its own package manager. We will use Node.js and its package manager while working with React.
-- **Oracle VirtualBox **: VirtualBox is a virtualization tool which allows for the creation of guest virtual machines on your host machine. We can use this tool to explore Docker as setting up Docker on Windows OS can be a headache.
-- **Vagrant**: Vagrant is an open-source software which allows developers to build and maintain portable virtual software development environments. We can use Vagrant in conjunction with Oracle VirtualBox in order to easily provision and maintain virtual machines in our development environments.
+- **Oracle VirtualBox (Optional)**: VirtualBox is a virtualization tool which allows for the creation of guest virtual machines on your host machine. We can use this tool to explore Docker as setting up Docker on Windows OS can be a headache.
+- **Vagrant (Optional)**: Vagrant is an open-source software which allows developers to build and maintain portable virtual software development environments. We can use Vagrant in conjunction with Oracle VirtualBox in order to easily provision and maintain virtual machines in our development environments.
 - **Visual Studio Code (Optional)**: Visual Studio Code is a text editor that makes viewing and modifying code simple. Do not confuse this tool with an integrated development environment as it does not come equipped with all of the development tools you typically find in an IDE. This tool is optional, but it can be helpful if you are new to programming and wish to familiarize yourself with the syntax of the Java programming language. 
 
 ## Installation Methods
