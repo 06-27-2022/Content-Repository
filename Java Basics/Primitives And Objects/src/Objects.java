@@ -22,9 +22,12 @@ public class Objects{
 		 * one big one being that primitives don't have methods/behaviors
 		 * associated with them. In order to create an object, you must
 		 * use a constructor in conjunction with the "new".
+		 * 
+		 * Please note that we have made an instace of the Object class
+		 * here. All classes implicitly inherit from the Object class as
+		 * all objects need to support some basic behaviors.
 		 */
 		int myPrimitive = 8;
 		Object myObject = new Object();
-		
 	}
 }
