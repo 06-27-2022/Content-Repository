@@ -12,6 +12,37 @@ package com.revature;
  */
 public class Bird extends Dinosaur{
 	
+	/*
+	 * When you declare properties on a child class, be sure that you do not accidentally
+	 * "shadow" the parent class's properties. Shadowing occurs when you effective hide the
+	 * parent class's properties by naming a child class's properties the exact same thing
+	 * that you named the parent class's properties.
+	 */
+	String chirpSound;
+	
+	Bird(){
+		/*
+		 * The implementation (logic inside of the curly braces) for a constructor is never
+		 * really empty. The very first line of any constructor is actually a call to the
+		 * parent class's constructor.
+		 * 
+		 * This means that this happens implicitly: super();
+		 * 
+		 * Please understand that if you choose to type super() that it MUST be the very first
+		 * line of constructor.
+		 */
+		
+		super();
+	}
+	
+	Bird(String name, String habitat){
+		super(name, habitat);
+	}
+	
+	Bird(String name, String habitat, int height){
+		super(name, habitat, height);
+	}
+	
 	@Override
 	void eat() {
 		//super keyword: this keyword is used to refer to the super class' (parent class')
@@ -34,7 +65,7 @@ public class Bird extends Dinosaur{
 		 * Please note that a Bird object has the properties of a Dinosaur object:
 		 * name, habitat, and height.
 		 */
-		Bird bigBird = new Bird();
+		Bird bigBird = new Bird("Toucan Sam", "Cereal Box");
 		
 		/*
 		 * Method overriding allows a child class to provide a specific implementation

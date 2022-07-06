@@ -7,8 +7,12 @@ package com.revature;
  * 
  * Java uses curly braces to denote a variable's scope. A variable is in scope for
  * the entirety of the "block" inside of which it is directly declared.
+ * 
+ * Recall that every class inherits from the Object class in Java. We now know that inheritance
+ * suggests that we inherit behavior and state from the parent class. This would suggest that
+ * methods from the Object class must be inherited by all classes in Java.
  */
-public class Dinosaur {
+public class Dinosaur{
 
 	/*
 	 * As a refresher, classes are often used to model or create blueprints for 
@@ -94,6 +98,19 @@ public class Dinosaur {
 		System.out.println("Ate very hungrily " + timesADay + " times a day");
 	}
 	
+	/*
+	 * The toString method is inherited from the Object class. It returns a String representation
+	 * of your Object.
+	 * 
+	 * Please note that Java knows that it should call the toString method when you attempt
+	 * to print an object. As such, you rarely see developers calling the toString method
+	 * themselves.
+	 */
+	@Override
+	public String toString() {
+		return "Name: " + this.name + ", Habitat: " + this.habitat + ", Height: " + this.height + "ft";
+	}
+	
 	
 	public static void main(String[] args) {
 		
@@ -132,9 +149,9 @@ public class Dinosaur {
 		triceratops.eat();
 		triceratops.eat(5);
 		
+		System.out.println(trex);
+		System.out.println(triceratops);
 		
-		
-//		System.out.println(dino);
 	}
 	
 }
