@@ -1,10 +1,10 @@
 package com.revature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
+
+import com.revature.model.Associate;
+import com.revature.repository.AssociateRepository;
+import com.revature.repository.AssociateRepositoryImpl;
 
 /*
  * JDBC stands for "Java Database Connectivity". JDBC provides a standard interface for
@@ -19,7 +19,8 @@ import java.sql.Statement;
  * Connection (interface): Represents a connection to your DB.
  * Statement (interface): Represents a SQL statement that you wish to run against your DB.
  * ResultSet (interface): Represents the records that are returned after executing a query.
- * SQLException (class)
+ * SQLException (class): A checked exception that is thrown when something goes awry when using
+ * 						 JDBC
  * 
  * Note that these are in fact interfaces; this means that they're abstract. As interfaces
  * have no implementations for their methods, we are required to provide the implementation
@@ -34,51 +35,18 @@ public class JDBCOverview {
 	 */
 	public static void main(String[] args) {
 		
-		try {
-			//The first step is to get a connection.
-			Connection conn = DriverManager.getConnection(
-					System.getenv("db_url"), 
-					System.getenv("db_username"), 
-					System.getenv("db_password")
-					);
-			
-			/*
-			 * After we have established a connection, we can execute SQL statements
-			 * against our DB. We will need the Statement interface. We can use our
-			 * connection to create a statement.
-			 */
-			Statement stmt = conn.createStatement();
-			
-			/*
-			 * The ResultSet will store the results of a running a query (e.g. the
-			 * records that are returned after executing that query).
-			 */
-			ResultSet set = stmt.executeQuery("select * from associates");
-			
-			/*
-			 * You have to extra the results from a ResultSet one by one once you have
-			 * the records local to your application.
-			 */
-			
-			while(set.next()) {
-				/* 
-				 * While there is another record in the result set, let's print the
-				 * the contents of the table rows here.
-				 */
-				int id = set.getInt(1);
-				String associateName = set.getString(2);
-				String associateLocale = set.getString(3);
-				String associateHobby = set.getString(4);
-				int trainerId = set.getInt(5);
-				
-				System.out.println(id + ", " + associateName + ", " + associateLocale
-						+ ", " + associateHobby + ", " + trainerId);
-				 
-			}
-		
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
+		AssociateRepository associateRepository = new AssociateRepositoryImpl();
+		/*
+		 * The below phenomenon is called "SQL injection". SQL injection occurs when
+		 * an end user of your application inputs valid SQL in an attempt to steal
+		 * data or alter data or even just delete it. Fortunately, there is a way to
+		 * prevent SQL in JDBC!
+		 */
+		Associate newAssociate = new Associate(0, "Christina", "Illinois", 
+				"lifting', 2); drop table batches; --the rest is a comment", 2);
+		associateRepository.save(newAssociate);
+		List<Associate> associates = associateRepository.findAllAssociates();
+		System.out.println(associates);
 	}
 	
 }
