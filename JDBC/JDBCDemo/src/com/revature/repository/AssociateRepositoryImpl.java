@@ -151,15 +151,91 @@ public class AssociateRepositoryImpl implements AssociateRepository{
 		
 	}
 
+	/**
+	 * This method should update an existing associate record in the "associates"
+	 * table.
+	 * 
+	 * @param associate an associate object containing updated state that will be written to
+	 * the DB.
+	 */
 	@Override
 	public void update(Associate associate) {
-		// TODO Auto-generated method stub
+		//The first step should always be to open a Connection to your DB.
+		Connection conn = null;
+		//I also know that I need a Statement object if I want to run queries against the DB.
+		PreparedStatement stmt = null;
+		final String SQL = "update associates set associate_locale = ? where id = ?";
+		
+		try {
+			//Using our utility class and method to grab a new connection to the DB
+			conn = ConnectionUtil.getNewConnection();
+			//Using the connection to get a Statement object.
+			stmt = conn.prepareStatement(SQL);
+			//Setting the parameters in our parameterized query
+			stmt.setString(1, associate.getAssociateLocale());
+			stmt.setInt(2, associate.getId());
+			//Executing the query
+			stmt.execute();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+			conn.close();
+			stmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
+	/**
+	 * This method should locate just a single associate by their unique ID and return
+	 * that Associate object to the caller.
+	 * 
+	 * @param id The associate's unique identifier in the database
+	 */
 	@Override
 	public Associate findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Associate associate = null;
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet set = null;
+		final String SQL = "select * from associates where id = ?";
+		
+		try {
+			conn = ConnectionUtil.getNewConnection();
+			stmt = conn.prepareStatement(SQL);
+			stmt.setInt(1, id);
+			set = stmt.executeQuery();
+			
+			//Now extract the data from the record in the ResultSet
+			if(set.next()) {
+				associate = new Associate(
+						set.getInt(1),
+						set.getString(2),
+						set.getString(3),
+						set.getString(4),
+						set.getInt(5)
+						);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+				stmt.close();
+				set.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return associate;
 	}
 }

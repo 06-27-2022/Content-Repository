@@ -21,11 +21,20 @@ public class ConnectionUtil {
 	 */
 	public static Connection getNewConnection() throws SQLException {
 		
-		//The first step is to get a connection.
-		return DriverManager.getConnection(
+		/*
+		 * For anyone who is interested in turning off autocommit mode and manually
+		 * committing, you can configure the automcommit using the returned Connection
+		 * object.
+		 */
+		
+		Connection conn = DriverManager.getConnection(
 				System.getenv("db_url"), 
 				System.getenv("db_username"), 
 				System.getenv("db_password")
 			);
+		
+//		conn.setAutoCommit(false); //optional
+		
+		return conn;
 	}
 }

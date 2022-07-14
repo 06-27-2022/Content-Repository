@@ -44,9 +44,25 @@ public class JDBCOverview {
 		 */
 		Associate newAssociate = new Associate(0, "Christina", "Illinois", 
 				"lifting', 2); drop table batches; --the rest is a comment", 2);
-		associateRepository.save(newAssociate);
+//		associateRepository.save(newAssociate);
+		
+		/*
+		 * I need to pass an Associate object to the "update" method that I have
+		 * written.
+		 */
+		Associate associateToUpdate = new Associate(11, "Christina", "Texas", 
+				"doesn't matter", 4);
+		
+//		associateRepository.update(associateToUpdate);
+		
+		//Printing all associates
 		List<Associate> associates = associateRepository.findAllAssociates();
-		System.out.println(associates);
+//		for(Associate individual : associates) {
+//			System.out.println(individual);
+//		}
+		
+		Associate retrievedAssociate = associateRepository.findById(100);
+		System.out.println(retrievedAssociate);
 	}
 	
 }
