@@ -1,0 +1,38 @@
+<!-- This is a comment. In any case, this file (the pom.xml file) is a configuration file
+for Maven projects. It is written in XML (eXtensible Markup Language). XML is often used
+to build configuration files. The term "pom" is actually an acronym which stands for
+"Project Object Model". A Project Object Model specifies configuration details for your
+project such as your project's name (artifactId) and even information about its Java version. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature</groupId>
+  <artifactId>JDBCWithMaven</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <!-- Maven is currently assuming that we're working in Java 5. We can change this with
+  a properties tag. -->
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <!-- The idea behind Maven is that you do not have to download your own jars. Maven
+  will simply download the jars for you. All you have to do is copy the dependency
+  information from the Maven repository into your pom (inside of the dependencies tag
+  of source). Maven has a conventional place on your computer where it downloads the jars.
+  Please note that Maven only downloads a jar if it doesn't exist in that place already.-->
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.4.0</version>
+	</dependency>
+	<dependency>
+		<groupId>com.revature</groupId>
+		<artifactId>JDBCWithMaven</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+  </dependencies>
+  
+</project>
