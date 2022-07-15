@@ -28,11 +28,6 @@ project such as your project's name (artifactId) and even information about its 
 	    <artifactId>postgresql</artifactId>
 	    <version>42.4.0</version>
 	</dependency>
-	<dependency>
-		<groupId>com.revature</groupId>
-		<artifactId>JDBCWithMaven</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</dependency>
   </dependencies>
   
 </project>
