@@ -1,0 +1,53 @@
+
+<!-- In this file we will have all of the configuration for your loggers;
+	All configuration should go inside the configuration tags
+ -->
+<configuration>
+
+	<!-- You can create several appenders; Appenders specify where your logs will go,
+		and here is where we will also format the logging messages
+		
+		Some other logback appenders: 
+		ConsoleAppender: appends log to the console
+		OutputStreamAppender: appends logs events to java.io.OutputStream
+		FileAppender
+		RollingFileAppender: appends log events to a file with the option of 
+		automatic file rollover
+	 -->
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<!-- This is where we will specify the file we want to send our logs -->
+		<file>src/main/resources/logback.log</file>
+		<!-- Here is where we will add the formatting to the message -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- Here we can specifically identify a logger level, and where we want it to be 
+	logged
+	 -->
+	<logger name="loggingexample.LoggingBasics" level="trace">
+		<appender-ref ref="FILE"/>
+	</logger>
+	
+	<!-- There can only be one root tag in your xml file, and you can only have
+	at most one root element 
+	
+	One thing to note about the levels: we can set the level for our logging so that logging
+	that occurrs below a certain level is not written to our file
+	
+	Logging levels: Error > Warn > Info > Debug > Trace
+	Trace: most detailed logging level, and the lowest level - mostly used for very deep debugging
+	Debug: for debugging an application, less detailed than trace but still low lvl
+	Info: provides informational messages, for example when an operation or process
+	has started or ended
+	Warn: gives a warning that the application might have harmful events (event that might
+	require attention, but is not critical)
+	Error: logs error events, whether expected or unexpected - meaning part of the application
+	is not working properly
+	 -->
+	<root level="info">
+		
+	</root>
+
+</configuration>
