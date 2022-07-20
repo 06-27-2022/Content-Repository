@@ -27,6 +27,19 @@ public class ConnectionUtil {
 		 * object.
 		 */
 		
+		/*
+		 * If you are running into an issue with your Driver class not being found
+		 * on the classpath, you can explicitly tell Java to load the class. Also note
+		 * that you will have to handle the checked ClassNotFoundException that could
+		 * be thrown as a result of telling Java to load a specific class.
+		 */
+		
+		try {
+			Class.forName("org.postgresql.Driver");
+		}catch(ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		Connection conn = DriverManager.getConnection(
 				System.getenv("db_url"), 
 				System.getenv("db_username"), 

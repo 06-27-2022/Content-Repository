@@ -12,16 +12,20 @@ endpoints (URLs) the client can use to access specific resources. -->
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <!-- In order to allow a client to access a specific resource that a servlet can provide,
-  we must map the servlet to a specific URL pattern. -->
-  <servlet-mapping>
-  	<servlet-name>HelloWorldServlet</servlet-name>
-  	<url-pattern>/hello</url-pattern>
-  </servlet-mapping>
-  <!-- After you've created a mapping, you want to specify the specific class that should
-  be instantiated when a client requests a resource using the URL specified above. -->
   <servlet>
-  	<servlet-name>HelloWorldServlet</servlet-name>
-  	<servlet-class>com.revature.web.HelloWorldServlet</servlet-class>
+    <servlet-name>HelloWorldServlet</servlet-name>
+    <servlet-class>com.revature.web.HelloWorldServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>HelloWorldServlet</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>AssociatePost</servlet-name>
+    <servlet-class>com.revature.web.AssociatePostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AssociatePost</servlet-name>
+    <url-pattern>/associate</url-pattern>
+  </servlet-mapping>
 </web-app>
