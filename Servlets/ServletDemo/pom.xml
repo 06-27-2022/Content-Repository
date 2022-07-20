@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.revature</groupId>
+  <artifactId>ServletDemo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <!-- We can package our Java applications as either a "jar" or a "war". The default packaging is actually a
+  "jar". This stands for Java archive, and this is simply a compact representation of all of the
+  compiled Java source code. A "war" (Web Archive), on the other hand, is a web-aware Java project that can be
+  deployed to a server. Servers provide the proper runtime environment for web applications to be
+  discoverable by other applications. The Server that we will be using is called "Tomcat".-->
+  <packaging>war</packaging>
+  <!-- Using the properties tag to modify our project's Java version -->
+  <properties>
+  	<maven.compiler.source>1.8</maven.compiler.source>
+  	<maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+  
+  <!-- Bringing in all of this project's required dependencies. -->
+  <dependencies>
+  	<dependency>
+  		<groupId>org.postgresql</groupId>
+  		<artifactId>postgresql</artifactId>
+  		<version>42.4.0</version>
+  	</dependency>
+  	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+  </dependencies>
+</project>
