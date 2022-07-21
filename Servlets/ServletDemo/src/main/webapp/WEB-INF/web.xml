@@ -28,4 +28,29 @@ endpoints (URLs) the client can use to access specific resources. -->
     <servlet-name>AssociatePost</servlet-name>
     <url-pattern>/associate</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>RequestParametersServlet</servlet-name>
+  	<servlet-class>com.revature.web.RequestParametersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>RequestParametersServlet</servlet-name>
+  	<url-pattern>/parameters</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>AllAssociatesServlet</servlet-name>
+  	<servlet-class>com.revature.web.AllAssociatesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AllAssociatesServlet</servlet-name>
+  	<url-pattern>/associates/all</url-pattern>
+  </servlet-mapping>
+  <!-- A mapping for our DispatcherServlet (our front controller): -->
+  <servlet>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<servlet-class>com.revature.web.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DispatcherServlet</servlet-name>
+  	<url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
 </web-app>
