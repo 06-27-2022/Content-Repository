@@ -1,11 +1,19 @@
 package com.revature.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.controller.AssociateController;
+import com.revature.model.Associate;
+import com.revature.repository.AssociateRepository;
+import com.revature.repository.AssociateRepositoryImpl;
 
 /**
  * Thus far, we've made a new servlet for every new resource we wanted to expose to
@@ -40,9 +48,11 @@ public class DispatcherServlet extends HttpServlet{
 		
 		String httpVerb = request.getMethod(); //isolating the verb
 		
-		//Let's print the URI
-		System.out.println(request.getRequestURI());
-		
+		if(httpVerb.equals("GET")) {
+			RequestHelper.processGet(request, response);
+		} else if(httpVerb.equals("POST")) {
+			RequestHelper.processPost(request, response);
+		}
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
