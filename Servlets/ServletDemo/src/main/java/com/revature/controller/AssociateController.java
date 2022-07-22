@@ -14,8 +14,8 @@ import com.revature.repository.AssociateRepositoryImpl;
 
 public class AssociateController { 
 
-	private static AssociateRepository associateRepository;
-	public static ObjectMapper objectMapper;
+	private AssociateRepository associateRepository;
+	public ObjectMapper objectMapper;
 	
 	public AssociateController() {
 		associateRepository = new AssociateRepositoryImpl();
@@ -32,12 +32,12 @@ public class AssociateController {
 	 * that you can only these objects within a servlet class.
 	 */
 	
-	public static String findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public String findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String json = objectMapper.writeValueAsString(associateRepository.findAllAssociates());
 		return json;
 	}
 	
-	public static void save(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	public void save(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		//Check the request body for JSON
 		String jsonBody = new String(request.getInputStream().readAllBytes());
 		Associate newAssociate = objectMapper.readValue(jsonBody, Associate.class);

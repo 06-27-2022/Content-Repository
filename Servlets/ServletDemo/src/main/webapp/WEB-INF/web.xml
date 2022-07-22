@@ -29,28 +29,65 @@ endpoints (URLs) the client can use to access specific resources. -->
     <url-pattern>/associate</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>RequestParametersServlet</servlet-name>
-  	<servlet-class>com.revature.web.RequestParametersServlet</servlet-class>
+    <servlet-name>RequestParametersServlet</servlet-name>
+    <servlet-class>com.revature.web.RequestParametersServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>RequestParametersServlet</servlet-name>
-  	<url-pattern>/parameters</url-pattern>
+    <servlet-name>RequestParametersServlet</servlet-name>
+    <url-pattern>/parameters</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>AllAssociatesServlet</servlet-name>
-  	<servlet-class>com.revature.web.AllAssociatesServlet</servlet-class>
+    <servlet-name>AllAssociatesServlet</servlet-name>
+    <servlet-class>com.revature.web.AllAssociatesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>AllAssociatesServlet</servlet-name>
-  	<url-pattern>/associates/all</url-pattern>
+    <servlet-name>AllAssociatesServlet</servlet-name>
+    <url-pattern>/associates/all</url-pattern>
   </servlet-mapping>
-  <!-- A mapping for our DispatcherServlet (our front controller): -->
   <servlet>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<servlet-class>com.revature.web.DispatcherServlet</servlet-class>
+    <servlet-name>Cookies</servlet-name>
+    <servlet-class>com.revature.web.Cookies</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>DispatcherServlet</servlet-name>
-  	<url-pattern>/api/*</url-pattern>
+    <servlet-name>Cookies</servlet-name>
+    <url-pattern>/cookies</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>com.revature.web.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InvalidateCookies</display-name>
+    <servlet-name>InvalidateCookies</servlet-name>
+    <servlet-class>com.revature.web.InvalidateCookies</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvalidateCookies</servlet-name>
+    <url-pattern>/invalidate-cookies</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HttpSessionManagement</display-name>
+    <servlet-name>HttpSessionManagement</servlet-name>
+    <servlet-class>com.revature.web.HttpSessionManagement</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HttpSessionManagement</servlet-name>
+    <url-pattern>/http-session</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InvalidateSession</display-name>
+    <servlet-name>InvalidateSession</servlet-name>
+    <servlet-class>com.revature.web.InvalidateSession</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InvalidateSession</servlet-name>
+    <url-pattern>/invalidate-session</url-pattern>
   </servlet-mapping>
 </web-app>

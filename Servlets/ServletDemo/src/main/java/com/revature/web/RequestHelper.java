@@ -6,11 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.controller.AssociateController;
-import com.revature.model.Associate;
-import com.revature.repository.AssociateRepository;
-import com.revature.repository.AssociateRepositoryImpl;
 
 /**
  * This helper class is designed to be used in conjunction with the
@@ -18,6 +14,8 @@ import com.revature.repository.AssociateRepositoryImpl;
  * delegate to an appropriate controller.
  */
 public class RequestHelper {
+	
+	private static AssociateController associateController = new AssociateController();
 
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,7 +32,7 @@ public class RequestHelper {
 		case "/associates":
 			// do stuff that writes all of the associates to the response body as JSON
 			response.setContentType("application/json");
-			return AssociateController.findAll(request, response);
+			return associateController.findAll(request, response);
 		default:
 			// if we get here, the resource must not exist, so we send a 404 back to the
 			// client.
@@ -52,7 +50,7 @@ public class RequestHelper {
 
 		switch (resource) {
 		case "/associate":
-			AssociateController.save(request, response);
+			associateController.save(request, response);
 			break;
 		default:
 			response.setStatus(404);
