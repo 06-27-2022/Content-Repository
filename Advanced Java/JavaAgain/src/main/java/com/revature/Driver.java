@@ -8,7 +8,7 @@ import com.revature.comparing.StudentFirstNameComparator;
 import com.revature.model.Student;
 
 public class Driver {
-
+	
 	/*
 	 * A main method to run examples later.
 	 */
@@ -20,12 +20,14 @@ public class Driver {
 		Student carly = new Student(4, "I", "Carly", 25, 'D');
 		Student beary = new Student(5, "Beary", "Allen", 34, 'F');
 		
+		
 		/*
 		 * You cannot use the < or > symbols with your own custom types (with object types
 		 * in general). Not only that, but there is no built-in way to compare instances of
 		 * your custom "Student" type, so Java does not know how to compare the instances
 		 * anyway.
 		 */
+		
 		if(christina.compareTo(canisha) < 0) {
 			System.out.println("Christina is younger than Canisha.");
 		}
@@ -81,4 +83,5 @@ public class Driver {
 		
 		System.out.println(students);
 	}
+		
 }
