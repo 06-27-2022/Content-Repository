@@ -1,0 +1,42 @@
+/*CSS: stands for Cascading Style Sheets - it is used for 
+styling HTML documents by specifying certain rules for layout
+and display using key/value pairs
+
+The way that you style the document is by using CSS selectors
+
+If you don't want to mess around with the css yourself, 
+you can apply the bootstrap framework to your html docs
+and it will do the styling for you!
+*/
+
+/*Element selector*/
+h1, h2 {
+	color:pink;
+}
+
+/*class selector*/
+.polkaman {
+	font-size:20px;
+	font-style:italic;
+}
+/*id selector*/
+#food {
+	background-color:yellow;
+}
+
+#fire {
+	color:red;	
+}
+
+/*Child selector*/
+div > p {
+	text-align:right;
+}
+
+/*Sibling selector- it will only select the elemts that are the sibling*/
+p ~ div {
+	background-color:purple;
+}
+
+
+

@@ -1,0 +1,119 @@
+<!--HTML: HyperText Markup Language: 
+	THis is technically not a programming language - because HTML is just
+	used to structure a webpage, and it doesn't provide functionality.
+	HTML docuemtns are files that end with .html or .htm extension.
+	Once we create our webpage and launch, a web browser will read the html
+	file and render its contents frmo top to bottom
+	
+	Difference between an element and a tag:
+	Element: an element is everying from the staring tag, the contents, and the 
+	closing tag
+	The tag is just referring to the <>
+	
+-->
+<!-- the doctype declares the version of an html document, and helps
+the browser to display the web page correctly -->
+<!DOCTYPE html>
+<html> <!-- this is the root element and it define the whole html document -->
+<head> <!-- this contains the metadata associated with this page
+including the title, encoding, and references to external stylesheets -->
+	<link rel="stylesheet" href="style.css"/>
+	<style>
+		h1 {
+			color:orange;
+		}
+	</style>
+</head>
+<body> <!-- defines the docuemnt's body -->
+	<h1 style="color:red">Welcome to Polkaman!</h1>
+	<h2>The Greatest Creatures on Earth!</h2>
+	<!-- This is a heading element: there are heading
+	elements of various sizes ranging from h1 - h6 -->
+	
+	<!-- Block Elements: block elements always start on a 
+	new line, and the browser automatically adds some space
+	before and after the element 
+	Inline elements: Elements that don't start a new line - 
+	they take up only as much width as necessary
+	-->
+	<p class="polkaman">Welcome to the Polkaman landing page<span> Hi!!</span>!</p>
+	<!-- an inline element for groups test or 
+	elements -->
+	<p>Here you can find a database storing all the known Polkaman</p>
+	
+	<p class="polkaman">List of Polkaman:</p>
+	
+	<div> 
+	Here is inside the div:
+		<p>Polkaman are unique creatures, totally not a copy of something that already exists</p>
+		<p>If you don't have one you should totally catch one!</p>
+	
+		<!-- This is a table~  -->
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Ability</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Peekachoo</td>
+					<td>Lighting strike</td>
+				</tr>
+				<tr>
+					<td>Fire Lizard</td>
+					<td>Fire breath</td>
+				</tr>
+			</tbody>
+		</table>
+	
+	</div>
+
+	
+	<!-- 2 Kinds of lists we can make in HTML: ordered lists
+	and unordered lists: -->
+	
+	<p>How to care for your Polkaman:</p>
+	<ol>
+		<li id="food">Buy the right kind of food!</li>
+		<li>Plan your schedule to be able to take your
+		Polkaman on adventures</li>
+		<li>Bathe your Polkaman** (except for electric or fire types)</li>
+	</ol>
+	<ul>
+		<li>Keep in mind that each Polkaman type has its own care needs</li>
+	</ul>
+	
+	<!-- A form is a section of a document that contains text fields,
+	password fields, radio buttons, etc, used for collecting info
+	from a user -->
+	
+	<!-- An attribute provides additional information about
+	elements, and they are always specified in the start tag -->
+	
+	<h3>Register</h3>
+	<form action="result.html" target="_blank">
+		<label>First name</label>
+		<input type="text" required><br>
+		<label>Enter new password</label>
+		<input type="password"><br>
+		What is your favorite Polkaman type?<br>
+		<input type="radio" name="FavType" id="fire">
+		<label for="fire" id="fire">Fire</label><br>
+		<input type="radio" name="FavType" id="water">
+		<label for="water">Water</label><br>
+		<input type="radio" name="FavType" id="electric">
+		<label for="electric">Electric</label><br>
+		<br>
+		Do you currently own a Polkaman?<br>
+		<input type="radio" name="currentlyOwn" id="yes">
+		<label for="yes">Yes</label><br>
+		<input type="radio" name="currentlyOwn" id="no">
+		<label for="no">No</label><br>
+		<input type="submit" value="submit">
+	</form>
+	
+
+</body>
+</html>
