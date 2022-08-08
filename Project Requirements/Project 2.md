@@ -38,7 +38,7 @@ Tips:
 - Use task management tool such as Trello, Asana, Jira, Github Project Boards
 - Daily standups (meet with your group and discuss the progress you have made on your user stories)
 
-Due: August X, 2022
+Due: August 21, 2022
 
 Teams
 =====
