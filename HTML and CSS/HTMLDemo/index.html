@@ -56,7 +56,7 @@ including the title, encoding, and references to external stylesheets -->
 					<th>Ability</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="polka_table_body">
 				<tr>
 					<td>Peekachoo</td>
 					<td>Lighting strike</td>
@@ -67,8 +67,19 @@ including the title, encoding, and references to external stylesheets -->
 				</tr>
 			</tbody>
 		</table>
-	
 	</div>
+
+	
+	<p>Add a Polkaman:</p>
+
+	<form>
+		<label>Polkaman Name: </label>
+		<input type="text"/>
+		<label>Polkaman Ability:</label>
+		<input type="text"/>
+		<input type="button" value="Submit Polkaman"/>
+	</form>
+
 
 	
 	<!-- 2 Kinds of lists we can make in HTML: ordered lists
@@ -114,6 +125,9 @@ including the title, encoding, and references to external stylesheets -->
 		<input type="submit" value="submit">
 	</form>
 	
-
+<!--It is common to include a script tag that links a JS file to an HTML document at the end of the body. This is because we want to make sure that all elements are rendered before we try to interact.-->
+<script src="./scripts/index.js">
+</script>
+<script src="./scripts/ajax.js"></script>
 </body>
 </html>
