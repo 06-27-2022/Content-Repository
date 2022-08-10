@@ -72,3 +72,38 @@ submit_button.addEventListener('click', () => {
 
 })
 
+/**
+ * Let us add another event listener to an element on this
+ * page. We will add event listeners to our ol (ordered list).
+ * We'll add 2 events.
+ */
+
+ let first_li = document.getElementById('food')
+ let ordered_list = document.querySelector('ol')
+
+ /**
+  * Note that is impossible to click on the first li
+  * without clicking on the ordered list itself. If
+  * both elements have event listeners attached to them,
+  * clicking on the li will actually dispatch 2 events.
+  * 
+  * The order in which this is going to naturally occur
+  * is from the innermost element to the outermost
+  * element. This is called "bubbling".
+  * 
+  * It is possible to reverse this order; if you want
+  * the outermost events to be dispatched first, you 
+  * can do so. In order to do, you can pass in an optional
+  * 3rd argument to the addEventListener function. This
+  * reverses the order in which events are dispatched.
+  * This is called "capturing".
+  */
+
+ first_li.addEventListener('click', () => {
+   window.alert('You clicked the first list item!')
+ })
+
+ ordered_list.addEventListener('click', () => {
+   window.alert('You clicked the ordered list!')
+ }, true)
+
