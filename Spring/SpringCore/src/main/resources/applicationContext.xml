@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Though you can use XML configuration, most people prefer to use annotations to configure
+their ApplicationContext. -->
+
+<!-- The root tag of a configuration file for setting up your Spring application context should be
+"beans". The tag name is apt as all Spring beans are defined inside of this tag. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+   
+   		<!-- Use the bean tag to add a single bean to the IoC container. Using the class attribute
+   		here, we tell Spring to add a bean of type PolkamanRepositoryImpl to the container.
+   		A bean name should be a unique identifier for a specific bean in the container.
+   		
+   		Note that Spring by default will only create a single instance of this bean in the container. This
+   		is actually called a "singleton" scoped bean. Beans have several different scopes if you need
+   		them to, namely:
+   		
+   		Singleton: Spring creates a single instance of a bean.
+   		Prototype: Spring create multiple instances of the bean.-->
+       <bean scope="singleton" class="com.revature.repository.PolkamanRepositoryImpl" name="polkamanRepository"></bean>  
+       
+       <!-- If you wish to tell Spring to provide a dependency, you have to tell Spring where to
+       provide the dependency. In other words, if one class depends on a Spring bean, you should
+       want Spring to automatically provide dependencies where they are needed. You should NOT have
+       to explicitly grab the bean from the container yourself. You can force Spring to wire in
+       dependencies. Wiring in dependencies entails creating relationships between different beans in
+       your container. 
+       
+       Thus far, we have explicitly wire beans together. That said, it is possible to not explictly
+       do so. In other words, we can tell Spring to "autowire" beans in for us. Yes, we still
+       tell Spring that we want a bean wired in, but we do not tell Spring which bean should be
+       wired in. Spring simply makes a reasonable assumption about which bean in the container 
+       should be wired in for us. Here are the strategies Spring can use:
+       
+       byName: Spring attempts to choose a bean from the container by its name in hopes that the bean
+       that the bean is being wired into exposes a property with that bean name.
+       
+       byType: Spring attempts to choose a bean from the container by its type in hopes that the bean
+       that the bean is wired into exposes a property of that type. If you have at least 2 beans of
+       the same type, you shouldn't be using byType; use byName instead.
+       
+       constructor: Spring attempts to choose a bean from the container by its type in hopes that the
+       bean that the bean is wired into exposes a constructor that has a bean of that type as a 
+       parameter.
+       -->
+       
+       <bean class="com.revature.service.PolkamanService" name="polkamanService" autowire="constructor">
+       <!-- The property of this bean refer to another bean in the container. Hence the "ref=polkamanRepository". 
+       The "name" attribute needs to match the name of the field on the class you would like Spring to target for
+       wiring in the bean property.-->
+       	<!--<property ref="polkamanRepository" name="polkamanRepository"></property>-->
+       	<!--<constructor-arg ref="polkamanRepository" index="0"></constructor-arg>-->
+       </bean>
+        
+</beans>
