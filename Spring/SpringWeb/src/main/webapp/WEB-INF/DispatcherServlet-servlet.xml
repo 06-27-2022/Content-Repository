@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Technically speaking, the DispathcerServlet has its own ApplicationContext. This context is a 
+WebApplicationContext. This means that you can define beans inside of this context, and sometimes
+you do define a few beans. -->
+<beans
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+	
+	<context:annotation-config></context:annotation-config>
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.revature.controller"></context:component-scan>
+	
+	<!-- I've temporarily added my beans to the DispatcherContext as I have a bug with my annotation
+	config right now. -->
+	<bean name="polkamanService" class="com.revature.service.PolkamanService"></bean>
+	<bean name="polkamanRepository" class="com.revature.repository.PolkamanRepositoryImpl"></bean>
+	
+</beans>
