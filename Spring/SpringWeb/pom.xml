@@ -16,8 +16,8 @@
 		you would like to use in your project by bringing those modules in as Maven 
 		dependencies. -->
 	<dependencies>
-		<!-- Spring web mvc uses the Jackson Object Mapper under the hood, but it does not ship
-		with Spring. This means that you have to include it yourself. -->
+		<!-- Spring web mvc uses the Jackson Object Mapper under the hood, but 
+			it does not ship with Spring. This means that you have to include it yourself. -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
@@ -55,6 +55,13 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.3.22</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

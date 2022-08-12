@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * To enable support for Spring Web Mvc, use the following annotation:
  */
 @EnableWebMvc
-public class AppConfig {
+public class AppConfig{
 
 	/*
 	 * If you wish to tell Spring to add beans to the container, you should declare
