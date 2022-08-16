@@ -8,9 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /*
@@ -31,6 +34,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
  * To enable support for Spring Web Mvc, use the following annotation:
  */
 @EnableWebMvc
+@EnableTransactionManagement
 public class AppConfig{
 
 	/*
@@ -48,7 +52,7 @@ public class AppConfig{
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.h2.Driver");
 		//Again, I'm using a different DB from you all, so my URL looks different from yours.
-		dataSource.setUrl("jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:init.sql';DB_CLOSE_DELAY=-1");
+		dataSource.setUrl("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1");
 		dataSource.setUsername("sa");
 		dataSource.setPassword("");
 		return dataSource;
@@ -113,12 +117,23 @@ public class AppConfig{
 		//This Hibernate property shows the SQL queries that Hibernate writes for you in the console.
 		hibernateProps.put("hibernate.show_sql", "true");
 		//This property denotes that Hibernate will run in "create" mode, which means it can create our tables for us.
-		hibernateProps.put("hibernate.hbm2ddl.auto", "validate");
+		hibernateProps.put("hibernate.hbm2ddl.auto", "create");
 		em.setJpaProperties(hibernateProps);
 		return em;
 	}
 	
-
+	/*
+	 * You can let Spring handle your DB transactions using a Transaction manager that wraps around
+	 * your entity manager. Spring can efficiently handle transactions in that it's not wasteful
+	 * about how it handles starting and ending transactions. For instance, if you have a method
+	 * that calls 2 repository layer methods, Spring will only begin a single transaction.
+	 */
+	@Bean
+	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		return transactionManager;
+	}
 	
 	
 

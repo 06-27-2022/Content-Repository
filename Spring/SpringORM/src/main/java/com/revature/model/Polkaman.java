@@ -2,7 +2,10 @@ package com.revature.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -45,12 +48,27 @@ public class Polkaman {
 
 	@Id //denotes that this column is the primary key for this table
 	@Column(name = "id") //denotes that this field should correspond to a column on the table in the DB
+	/*
+	 * For those of you who wish to use an auto-incrementing ID, you have to tell Hibernate that you
+	 * wish to do so. You use 2 annotations to do this:
+	 */
+	@GeneratedValue(generator = "polkaman_id_seq", strategy = GenerationType.AUTO)
+	@SequenceGenerator(allocationSize = 1, name = "polkaman_id_seq")
 	private int id;
 	@Column(name = "polka_name")
 	private String polka_name;
 	@Column(name = "polka_type")
 	private String polka_type;
-	@Column(name = "polka_trainer")
-	private String polka_trainer;
+	/*
+	 * To specify that this column is a reference to a record on another table in the DB, we
+	 * can use our multiplicity annotations.
+	 * 
+	 * By default, when you have a single association for an entity like
+	 * we do here, Hibernate uses what we call "eager fetching", which means that it eagerly
+	 * fetches the associated record.
+	 */
+//	@ManyToOne
+//	@JoinColumn(name = "polka_trainer") //specifies that this is a foreign key
+//	private Trainer trainer;
 
 }
