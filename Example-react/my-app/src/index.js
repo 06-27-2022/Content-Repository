@@ -15,17 +15,33 @@
 //to a snapshot of the pre-updated version of the DOM, sees what is different, and then
 //only updates those object that need to be changed on the real DOM. 
 
+// /
+//  * Single Page Applications: 
+//  * A single page appliaciton is just an app that loads a single HTML page and all the 
+//  * neccessary files, or assets (like JS or CSS) which a re needed for the app to run are
+//  * all loaded at once. Rather than having or requesting different HTML files from the server,
+//  * React will swap out the existing HTML on the page with other content that has been
+//  * pre-loaded. THis gives the illusion of page navigation without actually having to make
+//  * another request to the server. This tends to be the fast way, because you don't have to wait
+//  * for the request to be received, since all the data the app needs is already pre-loaded.
+//  * React Router is a way you can creat the navigation between these different views in React. 
+//  * React Router is a declarative model for navigational components in you app - we will be using
+//  * react-router-dom which is specific support for web apps
+//  * /
+
 
 //import React from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {Routes, Route, BrowserRouter} from 'react-router-dom';
 //we need to import ReactDOM beacuse it contains necessary method to manipulate the DOM
 //In other words, this library is how we will be able to render our react app to the 
 //Browser. Just to clarify - the DOM is used in Reacts apps, but it's not part of React
 import './index.css';
-import { WeLovePandas } from './App';
+import { AboutUs, Shop, WeLovePandas } from './App';
 import {PandaPics} from './App';
 import { Diet } from './App';
+import { Site } from './App';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
@@ -36,13 +52,21 @@ import { Diet } from './App';
 
 //this is a library that contains react-specific methods that all interact with the DOM
 //in various ways
+
+//React apps are not by default single page appliactions - if you want to make your react
+//app a SPA, there are various ways - the way I chose is to use React Router
+//The BrowserRouter uses the HTML5 history API to keep the UI in sync with the URL
+//Each Route tag represnts a renderable component
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    <WeLovePandas/> 
-    <PandaPics/>
-    <h1>I am a header element</h1>
-    <Diet/>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Site/>}/>
+        <Route path="/shop" element={<Shop/>}/>
+        <Route path="/about" element={<AboutUs/>}/>
+      </Routes>
+    </BrowserRouter>
   </div>
 );
 //instantiating my class component: <WeLovePandas/>
