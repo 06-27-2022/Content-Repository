@@ -38,7 +38,7 @@ import {Routes, Route, BrowserRouter} from 'react-router-dom';
 //In other words, this library is how we will be able to render our react app to the 
 //Browser. Just to clarify - the DOM is used in Reacts apps, but it's not part of React
 import './index.css';
-import { AboutUs, Shop, WeLovePandas } from './App';
+import { AboutUs, AlternateDimension, Shop, Sponsors, WeLovePandas } from './App';
 import {PandaPics} from './App';
 import { Diet } from './App';
 import { Site } from './App';
@@ -65,6 +65,7 @@ root.render(
         <Route path="/" element={<Site/>}/>
         <Route path="/shop" element={<Shop/>}/>
         <Route path="/about" element={<AboutUs/>}/>
+        <Route path="/sponsors" element={<Sponsors/>}/>
       </Routes>
     </BrowserRouter>
   </div>

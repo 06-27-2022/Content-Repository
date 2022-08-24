@@ -1,6 +1,11 @@
 import './App.css';
 import React from 'react';
 import {Nav} from './components/nav'
+import { GetSponsors, AddPosts } from './pages/quotes';
+import { AnimalsToAdd } from './pages/about';
+import {Section} from './components/section';
+import {wrapper} from './components/wrapper'
+
 
 //this is just a class for the animals we will add to the browser
 class animal {
@@ -10,51 +15,19 @@ class animal {
   }
 }
 
-/*
-Props: basically just properties - it's a way for components to pass info to
-other components. Something to now is that every component has props - because
-props are just objects that hold info about that component.
-*/
-//I want this section to help us to organize our view
-function Section(props) {
-  //State: State is something that inherent to the component, similar to a property, 
-  //but the state is decided by the component itself - you would want to use state
-  //when you might want the info that is being used to change. 
-  const [showInfo, setShowInfo] = React.useState(false);
-  //What is Hook: Hook is a special function that lets you "hook into" react features that
-  //you otherwise would not be able to use. For example, useState is a hook that let's you add
-  //state to function components. One thing to note about hooks is that you can only
-  //call hooks from react functions.
-  //useState declares a "state variable" - this gives us a way to preserve this value between 
-  //function calls. Normally variables "disappear" when the function exits but state variables
-  //are preserved.
 
-  function toggleInfo(){
-    setShowInfo(!showInfo);
-  }
-
-  if(!showInfo){
-    return (
-      <div id={props.sectionId} className="section">
-        <h2>{props.name}</h2>
-        <img src={props.url} height="200px" width="200px"/>
-        <button onClick={toggleInfo} type="button">{props.buttonText}</button>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Additional info!</p>
-        <Diet name="test"/>
-      </div>
-    );
-  }
-
+function Welcome() {
+  return (
+    <div>
+      <h3>Animal Facts</h3>
+    </div>
+  );
 }
 
 function View() {
   let animals = [];
   let sections = [];
+  let count = 0;
 
   animals.push(new animal('panda', 'https://media.istockphoto.com/photos/cute-panda-bear-climbing-in-tree-picture-id523761634?k=20&m=523761634&s=612x612&w=0&h=fycQb31QlRoNLdJWWddooJ94a-54YLYQ3ggTLPkhvmk='));
   animals.push(new animal('owl', 'https://images.pexels.com/photos/53977/eagle-owl-raptor-falconry-owl-53977.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'));
@@ -69,12 +42,14 @@ function View() {
         sectionId={sectionId}
         name={name}
         url={url}
+        key={count}
         buttonText={"Find out more about " + name + "s"}/>
     );
   }
 
   for(let a of animals){
     sections.push(renderSection(a.sectionId, a.name, a.url));
+    count++;
   }
 
   return(
@@ -85,9 +60,13 @@ function View() {
 }
 
 export function Site(){
+
+const HeadingComponent = wrapper(Welcome);
+
   return (
     <div>
       <Nav/>
+      <HeadingComponent/>
       <View/>
     </div>
   );
@@ -110,7 +89,23 @@ export function AboutUs(){
   return (
     <div>
       <Nav/>
+      <br/>
+      <h2>About us</h2>
       <p>Our goal is to educate others about various animals' diet and behavior</p>
+      <br/>
+      <AnimalsToAdd/>
+    </div>
+  );
+}
+
+export function Sponsors(){
+  return (
+    <div>
+      <Nav/>
+      <br/>
+      <AddPosts/>
+      <br/>
+      <GetSponsors/>
     </div>
   );
 }
@@ -166,12 +161,12 @@ export function PandaPics() {
 //only really necessary to use keys if the list items order is important, or if the 
 //list items have "memory" from one render to the next (for example: if I have a to-do list
 // and I need to keep track of the tasks I have completed)
-export function Diet(props) {
+export function Diet() {
   const foodItems = ["bamboo", "watermelon", "mangoes"];
 
   return (
     <div>
-      <h1>{props.animalName}</h1>
+      <h1>Panda diet</h1>
       <ol>
         {foodItems.map((item, i) => (
           <li key={'food_' + i}>{item}</li>

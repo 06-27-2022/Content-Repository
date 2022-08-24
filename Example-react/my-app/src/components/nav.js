@@ -15,6 +15,9 @@ export function Nav(){
                     <li className="nav-item">
                         <Link to="/about">About Us</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link to="/sponsors">A Word from Our Sponsors</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
