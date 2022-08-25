@@ -1,0 +1,39 @@
+name: Build and Test React App
+#name is optional
+#used to specify the trigger for the workflow - in this case the trigger is a push or pull , only for main
+on: 
+  push: 
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+#this keyword groups together all the jobs that run in this workflow
+#jobs can run sequentially or in parallet 
+
+jobs: 
+  build_test: 
+    #the type of runner the job will run on
+    runs-on: ubuntu-latest
+    defaults: 
+      run: 
+        working-directory: Example-react/my-app
+        #we must inlcude the working-direcctory so that 
+        #the workflow can find all the files it needs
+        
+    strategy: 
+      matrix: 
+        node-version: [ 14.x ]
+    #steps represent a sequence of tasks that will be exectue as part of the job 
+    steps: 
+      #uses keyword allows us to specify that the step will run on v2 of the actions/checkout action
+      #checkout is "checking out" your repo to the runner
+      - uses: actions/checkout@v2    
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v2
+        with: 
+          node-version: ${{matrix.node-version}}
+          
+      - name: npm i, build and test
+        run: |
+          npm i
+          npm run build --if-present
+          npm test
