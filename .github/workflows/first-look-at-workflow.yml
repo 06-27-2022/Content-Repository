@@ -13,9 +13,9 @@ jobs:
   build_test: 
     #the type of runner the job will run on
     runs-on: ubuntu-latest
-    #defaults: 
-      #run: 
-        #working-directory: Example-react/my-app
+    defaults: 
+      run: 
+        working-directory: Example-react/my-app
         #we must inlcude the working-direcctory so that 
         #the workflow can find all the files it needs
         
