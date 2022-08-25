@@ -27,7 +27,7 @@ export function Section(props) {
       return (
         <div id={props.sectionId} className="section">
           <h2>{props.name}</h2>
-          <img src={props.url} height="200px" width="200px"/>
+          <img src={props.url} alt="" height="200px" width="200px"/>
           <button onClick={toggleInfo} type="button">{props.buttonText}</button>
         </div>
       );

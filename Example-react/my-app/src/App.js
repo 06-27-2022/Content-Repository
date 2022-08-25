@@ -78,6 +78,7 @@ export function Shop(){
       <Nav/>
       <p>Welcome to the shop!</p>
       <img 
+      alt="shopping cart"
       src="https://th.bing.com/th/id/OIP.iDVurdWMV4YcAhqCEaT1bQHaHa?pid=ImgDet&rs=1"
       height="200px"
       width="200px"/>
