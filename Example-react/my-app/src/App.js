@@ -16,7 +16,7 @@ class animal {
 }
 
 
-function Welcome() {
+export function Welcome() {
   return (
     <div>
       <h3>Animal Facts</h3>
@@ -58,6 +58,8 @@ function View() {
     </div>
   );
 }
+
+
 
 export function Site(){
 
